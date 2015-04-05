@@ -1,0 +1,12 @@
+{
+  "title": "Host Schema",
+  "description": "Defines the requirements for a valid host configuration.",
+  "type": "object",
+  "properties": {
+    "site": {
+      "description": "The site this hostname belongs to.",
+      "type": "string"
+    },
+    "required": ["site"]
+  }
+}

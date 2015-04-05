@@ -1,0 +1,32 @@
+{
+  "title": "Site Schema",
+  "description": "Defines the requirements for a valid site configuration.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "The most common name used for the site.",
+      "type": "string"
+    },
+    "copyright": {
+      "description": "The default copyright info to use throughout the site",
+      "$ref": "#/definitions/copyright" }
+  },
+  "definitions": {
+    "copyright": {
+      "description": "A copyright",
+      "startYear": {
+        "description": "The year the earliest content covered by the copyright was created.",
+        "type": "date-time",
+        "arSubtype": "date"
+      },
+      "owner": {
+        "description": "The copyright owner, a person or organization.",
+        "type": "text"
+      },
+      "rights": {
+        "description": "The copyright owner, a person or organization.",
+        "type": "string"
+      }
+    }
+  }
+}
