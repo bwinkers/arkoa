@@ -1,0 +1,16 @@
+{
+  "data": {
+    "connections": {
+      "mongo": {
+        "host": "localhost",
+        "schema": "activerules",
+        "port": 27017
+      },
+      "cayley": {
+        "host": "127.0.0.1",
+        "port": 64210
+      }
+    }
+  },
+  "services": ["auth", "homepage"]
+}

@@ -1,65 +1,58 @@
 /**
  * ActiveRules implemented on top of Koa.
+ *
+ * @module arkoa
+ * @copyright 2015 - Brian Winkers
+ * @license MIT
  */
 "use strict";
 
-var koa = require('koa');
+/**
+ * System wide settings, most settings will be in ActiveRules sites
+ * File-based Configuration support, using nconf for bow
+ *
+ * Setup nconf to use (in-order):
+ * 1. Command-line arguments
+ * 2. Environment variables
+ * 3. A file located at 'path/to/config.json'
+ *
+ * @type {exports}
+ */
+var settings = require('nconf');
+settings.argv()
+    .env()
+    .file({ file: './config/settings.json' });
+
+/**
+ * Koala provides a Koa app with good default middleware
+ *
+ * @type {function(): app|exports}
+ */
+var koa = require('koala');
+
+/**
+ * Create the Koa app with Koala middleware
+ */
 var app = koa();
 
-var ar = require('./lib/activerules');
+/**
+ *  Include the controller routes and handlers
+ */
+var router = require('./lib/controllers');
 
-var Model = ar.Model;
+/**
+ * Load the service controllers and their configured routes
+ */
+router.loadControllers(settings.get('services'));
 
-// x-response-time
+/**
+ * Use the routes in our app
+ */
+app
+    .use(router.routes())
+    .use(router.allowedMethods());
 
-app.use(function *(next){
-    var start = new Date;
-    yield next;
-    var ms = new Date - start;
-    this.set('X-Response-Time', ms + 'ms');
-});
-
-// logger
-
-app.use(function *(next){
-    var start = new Date;
-    yield next;
-    var ms = new Date - start;
-    console.log('%s %s - %s', this.method, this.url, ms);
-});
-
-// response
-
-app.use(function *(){
-
-    class Post extends Model {
-
-    }
-
-    // create new Post document
-    var post = new Post({
-        title: 'Node.js with --harmony rocks!',
-        body: 'Long post body',
-        author: {
-            name: 'John Doe'
-        }
-    });
-
-
-    // create
-    yield post.save();
-
-
-    // update document
-    post.set('title', 'Post got a new title!');
-    post.set('author.name', 'Doe John');
-
-
-    // update
-    yield post.save();
-
-
-    this.body = 'Hello World';
-});
-
+/**
+ * Have the App accept Requests
+ */
 app.listen(3000);

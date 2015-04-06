@@ -1,0 +1,37 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Provides site and request specific data for the homepage.",
+    "version": "0.1.0",
+    "title": "Homepage Data"
+  },
+  "basePath": "/v1",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Site Homepage",
+        "description": "The content required to populate the home page.",
+        "operationId": "getHomepage",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "handler": {
+          "model": "homepage",
+          "function": "siteHomepage"
+        }
+      }
+    }
+  }
+}

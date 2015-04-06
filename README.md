@@ -13,3 +13,7 @@ With ActiveRules `Zero Code API` you simply define your business objects and the
 * No validation should happen at the DB library level. (i.e. Mongoose validation)
 * JSON object are converted to JavaScript objects for processing.
 * The JavaScript objects properties and methods are defined within the schema
+
+### License
+ActiveRules and all of it's modules are released under the MIT license, this permits broad reuse.
+http://opensource.org/licenses/MIT
