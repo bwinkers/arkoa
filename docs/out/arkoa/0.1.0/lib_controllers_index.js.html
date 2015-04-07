@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: lib/controllers/index.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: lib/controllers/index.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * ActiveRules Controller/Routes/Handler Reader
+ */
+"use strict"
+
+/**
+ * Use a JSON Schema validator
+ * @type {exports}
+ */
+var validator = require('is-my-json-valid');
+
+/**
+ * Set the schema we'll validate against, currently a local copy of the Swagger schema.
+ * @type {exports}
+ */
+var serviceSchema = require('../nugget/schema/swagger/v2.0/schema.json');
+
+/**
+ * The ActiveRules module provides functions useful within the ActiveRules paradigm
+ * @type {exports}
+ */
+var ar = require('../activerules/');
+
+/**
+ * Koa Router - Similar to Express router
+ * We add routes to the router and then use it in the app.
+ * @type {exports}
+ */
+var router = require('koa-router')();
+
+/**
+ * Routes object
+ * @constructor
+ */
+var Routes = function () {};
+
+
+/**
+ * The root directory to base other paths on
+ *  @type {string}
+ */
+var rootDir =  '';
+
+/**
+ * The directory models are stored in
+ * @type {string}
+ */
+var modelDir = '';
+
+/**
+ * Start with an empty Swagger schema, this gets populated while looping through services.
+ * @type {{}}
+ */
+var swaggerSchema = {};
+
+/**
+ * Load controller routes for all configured services
+ * @param services
+ */
+Routes.prototype.loadControllers = function (settings) {
+
+    /**
+     * The services configured in the settings.
+     * @type {array}
+     */
+    var services = settings.get('services');
+
+    /**
+     * The current service being worked on, used within load controllers.
+     * @type {string}
+     */
+    var service = '';
+
+    // Loop through services
+    for (var key in services) {
+
+        // Reset the local service variable to the services array key value
+        service = services[key];
+
+        // Load this service
+        this.loadController(service, settings);
+    }
+
+    // Write out the Swagger file
+
+    router.get('/', function *(next) {
+        this.body = 'Welcome'
+    });
+};
+
+/**
+ * Load a single service controller
+ * If the service has a valid service JSON file, read it's paths.
+ * The paths are valid swagger paths with an additional handler property.
+ * The handler property defines an ActiveRules model and method to handle the request.
+ * @param service
+ */
+Routes.prototype.loadController = function (service, settings) {
+
+    // Set the root dir based on the settings, other paths are based off this.
+    rootDir = settings.get('rootDir');
+
+    // Define the models directory.
+    modelDir = rootDir + '/lib/models/';
+
+    // Define the service definition file path
+    var serviceDefinitionPath = rootDir + '/lib/controllers/' + service + '/service.json';
+
+    console.log(rootDir + ' ' + modelDir  + ' ' +  serviceDefinitionPath);
+
+    return ar.loadCoreSchemaObject(serviceDefinitionPath, '/activerules/webService.json')
+        .then(function(serviceDefinition) {
+
+            console.log(serviceDefinition);
+
+            //console.log("Loaded Service Definition: " + serviceDefinition);
+
+
+        });
+
+/*
+    var serviceModulePath = setti  + '/services/' + service;
+
+    services[service] = require(serviceModulePath);
+
+    app.use(services[service]);
+
+
+    var servicePath = configDir  + '/services/' + service + '/routes.json';
+
+    return nugget.loadCoreSchemaObject(servicePath, '/schema/activerules/webService.json')
+        .then(function(routes) {
+
+            console.log("Loaded Service: " + service);
+
+            _.forOwn(routes, function(route) {
+                // load each route
+                loadRoute(app, route);
+            });
+        });
+        */
+}
+
+/**
+ * Pass back the raw Koa Router routes
+ * @returns {*} Valid Koa Router routes
+ */
+Routes.prototype.routes = function() {
+    return router.routes();
+}
+
+/**
+ * Pass back the raw Koa Router allowedMethods
+ * @returns {*} Valid Koa Router allowedMethods
+ */
+Routes.prototype.allowedMethods = function() {
+    return router.allowedMethods();
+}
+
+/**
+ * Set the modules entire exports to an isntance of our class.
+ * @type {Routes}
+ */
+module.exports = new Routes();
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-arkoa.html">arkoa</a></li><li><a href="module-nugget.html">nugget</a></li></ul><h3>Classes</h3><ul><li><a href="module-nugget-Nugget.html">Nugget</a></li><li><a href="Routes.html">Routes</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ar">ar</a></li><li><a href="global.html#coreSchemaObject">coreSchemaObject</a></li><li><a href="global.html#fileStatus">fileStatus</a></li><li><a href="global.html#getFileStats">getFileStats</a></li><li><a href="global.html#loadCoreSchemaObject">loadCoreSchemaObject</a></li><li><a href="global.html#loadJSON">loadJSON</a></li><li><a href="global.html#modelDir">modelDir</a></li><li><a href="global.html#Mongorito">Mongorito</a></li><li><a href="global.html#refSchemaObject">refSchemaObject</a></li><li><a href="global.html#rootDir">rootDir</a></li><li><a href="global.html#router">router</a></li><li><a href="global.html#schemaObject">schemaObject</a></li><li><a href="global.html#serviceSchema">serviceSchema</a></li><li><a href="global.html#swaggerSchema">swaggerSchema</a></li><li><a href="global.html#tryCoreSchemaObject">tryCoreSchemaObject</a></li><li><a href="global.html#validate">validate</a></li><li><a href="global.html#validator">validator</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Tue Apr 07 2015 12:24:37 GMT-0500 (CDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
