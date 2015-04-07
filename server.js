@@ -22,6 +22,8 @@ var settings = require('nconf');
 settings.argv()
     .env()
     .file({ file: './config/settings.json' });
+// Add the app root to the settings
+settings.add('app', { type: 'literal', store: { 'rootDir': __dirname} });
 
 /**
  * Koala provides a Koa app with good default middleware
@@ -43,7 +45,7 @@ var router = require('./lib/controllers');
 /**
  * Load the service controllers and their configured routes
  */
-router.loadControllers(settings.get('services'));
+router.loadControllers(settings);
 
 /**
  * Use the routes in our app
