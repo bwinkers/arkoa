@@ -1,5 +1,5 @@
 ARKOA - ActiveRules on Koa
-=============================
+==========================
 
 ActiveRules on Koa 
 A powerful framework for creating the next generation of peer-to-peer, social and interactive web sites.
