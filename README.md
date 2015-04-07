@@ -40,7 +40,7 @@ Most directories should have their own README.MD stating what the contained file
 
 JSDoc files are in /doc/out.
 To generate from /doc root run:
-jsdoc -r ../*.json ../*.js ../*.md ../config ../lib
+    jsdoc -r ../*.json ../*.js ../*.md ../config ../lib
 
 
 ### License
