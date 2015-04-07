@@ -35,6 +35,14 @@ output
   |-swagger.json - The Swagger spec file created by combining the patsh defined for each service controller.    
 
 
+### Documentation
+Most directories should have their own README.MD stating what the contained files do.
+
+JSDoc files are in /doc/out.
+To generate from /doc root run:
+
+
+
 ### License
 ActiveRules and all of it's modules are released under the MIT license, this permits broad reuse.
 http://opensource.org/licenses/MIT
