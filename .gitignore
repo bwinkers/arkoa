@@ -28,3 +28,13 @@ node_modules
 .lock-wscript
 /nbproject/private/
 /nbproject/project.properties
+/nbproject/project.xml
+/.idea/libraries/arkoa_node_modules.xml
+/.idea/scopes/scope_settings.xml
+/.idea/misc.xml
+/.idea/jsLibraryMappings.xml
+/.idea/vcs.xml
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/arkoa.iml
+/.idea/encodings.xml
