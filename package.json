@@ -1,0 +1,48 @@
+{
+  "name": "arkoa",
+  "version": "0.1.0",
+  "description": "ActiveRules implemented in Koa, a generator based node web framework",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bwinkers/arkoa.git"
+  },
+  "keywords": [
+    "ActiveRules",
+    "Koa",
+    "Node",
+    "JSON Schema",
+    "Mongorito",
+    "Cayley"
+  ],
+  "author": "Brian Winkers <bwinkers@gmail.com> (https://github.com/bwinkers)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bwinkers/arkoa/issues"
+  },
+  "homepage": "https://github.com/bwinkers/arkoa",
+  "dependencies": {
+    "cayley": "^0.2.1",
+    "co": "^4.5.1",
+    "is-my-json-valid": "^2.10.0",
+    "koa": "^0.18.1",
+    "koa-mount": "^1.3.0",
+    "koa-router": "^4.3.2",
+    "koala": "^0.9.1",
+    "lodash": "^3.6.0",
+    "mongo": "^0.1.0",
+    "mongorito": "^1.1.1",
+    "nconf": "^0.7.1",
+    "promised-io": "^0.3.5"
+  },
+  "engines": {
+    "node": ">= 0.11.16",
+    "iojs": ">= 1.0.0"
+  },
+  "files": [
+    "lib"
+  ]
+}
