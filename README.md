@@ -28,11 +28,11 @@ With ActiveRules `Zero Code API` you simply define your business objects and the
       |-controllers
         |-index.js - Loads configured controllers
         |-{service_name}
-            |-services.json - Defines the service and connects Swagger definitions with handler functions within the models.
-        |-models - All the logic of the app is containe din mdoels here
+            |-services.json - Defines the service in Swagger with handler info.
+        |-models - All the logic of the app is contained in models here
 
     output 
-      |-swagger.json - The Swagger spec file created by combining the patsh defined for each service controller.    
+      |-swagger.json - The Swagger spec file created from service controller   
 
 
 ### Documentation
@@ -40,6 +40,7 @@ Most directories should have their own README.MD stating what the contained file
 
 JSDoc files are in /doc/out.
 To generate from /doc root run:
+
     jsdoc -r ../*.json ../*.js ../*.md ../config ../lib
 
 
