@@ -23,7 +23,11 @@ settings.argv()
     .env()
     .file({ file: './config/settings.json' });
 // Add the app root to the settings
-settings.add('app', { type: 'literal', store: { 'rootDir': __dirname} });
+var rootDir = __dirname;
+settings.add('rootDir', { type: 'literal', store: { 'rootDir': rootDir } });
+settings.add('modelDir', { type: 'literal', store: { 'modelDir': rootDir + '/lib/models/' } });
+settings.add('schemaDir', { type: 'literal', store: { 'schemaDir': rootDir + '/lib/schema/' } });
+settings.add('controllerDir', { type: 'literal', store: { 'controllerDir': rootDir + '/lib/controllers/' } });
 
 /**
  * Koala provides a Koa app with good default middleware
@@ -57,4 +61,4 @@ app
 /**
  * Have the App accept Requests
  */
-app.listen(3000);
+app.listen(3300);

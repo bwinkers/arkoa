@@ -1,0 +1,10 @@
+{
+  "title": "ActiveRule Host Config",
+  "type": "object",
+  "properties": {
+    "site": {
+      "type": "string"
+    }
+  },
+  "required": ["site"]
+}

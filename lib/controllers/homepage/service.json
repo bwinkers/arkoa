@@ -27,9 +27,9 @@
             "description": "Not Found"
           }
         },
-        "handler": {
-          "model": "homepage",
-          "function": "siteHomepage"
+        "x-handler": {
+          "controller": "homepage",
+          "controllerFunc": "siteHomepage"
         }
       }
     }

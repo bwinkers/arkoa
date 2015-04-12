@@ -1,0 +1,42 @@
+{
+  "title": "ActiveRule Site Config",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "The most common name used for the site.",
+      "description-arl10n": "core.name.label",
+      "type": "string"
+    },
+    "copyright": {
+      "startYear": {
+        "description": "The year the earliest content covered by the copyright was created.",
+        "description-arl10n": "core.copyright.year.label",
+        "type": "date-time",
+        "arSubtype": "date"
+      },
+      "owner": {
+        "description": "The copyright owner, a person or organization.",
+        "description-arl10n": "core.copyright.owner.label",
+        "type": "tex"
+      },
+      "rights": {
+        "description": "The copyright owner, a person or organization.",
+        "description-arl10n": "core.copyright.rights.label",
+        "type": "string"
+      }
+    },
+    "services": {
+      "startYear": {
+        "description": "An array of services the site supports",
+        "description-arl10n": "core.services.label",
+        "type": "array",
+        "items": {
+          "oneOf": [
+            { "$ref": "nugget/service.json" }
+          ]
+        }
+      }
+    }
+  },
+  "required": ["name", "copyright", "services"]
+}

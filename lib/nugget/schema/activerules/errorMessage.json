@@ -1,0 +1,32 @@
+{
+  "title": "ActiveRules Error Message",
+  "type": "object",
+  "allOf": [
+    { "$ref": "#/definitions/message" },
+    {
+      "properties": {
+        "logMessage": {
+          "description": "Message to be logged for developer or sys admin.",
+          "type": "string"
+        }
+      }
+    }
+  ],
+  "required": ["logMessage"],
+  "definitions": {
+    "message": {
+      "type": "object",
+      "properties": {
+        "lten": {
+          "description": "The ActiveRules localization (lten) object notation code for the error.",
+          "type": "string"
+        },
+        "message": {
+          "description": "The message to be returned to a client or user.",
+          "type": "string"
+        }
+      },
+      "required": ["lten"]
+    }
+  }
+}

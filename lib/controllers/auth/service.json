@@ -37,9 +37,9 @@
             "description": "successful operation"
           }
         },
-        "handler": {
-          "model": "auth",
-          "function": "create"
+        "x-handler": {
+          "controller": "auth",
+          "controllerFunc": "create"
         }
       }
     },
@@ -93,9 +93,9 @@
             "description": "Invalid username/password supplied"
           }
         },
-        "handler": {
-          "model": "auth",
-          "function": "login"
+        "x-handler": {
+          "controller": "auth",
+          "controllerFunc": "login"
         }
       }
     },
@@ -116,9 +116,9 @@
             "description": "successful operation"
           }
         },
-        "handler": {
-          "model": "auth",
-          "function": "logout"
+        "x-handler": {
+          "controller": "auth",
+          "controllerFunc": "logout"
         }
       }
     },
@@ -156,9 +156,9 @@
             "description": "User not found"
           }
         },
-        "handler": {
-          "model": "user",
-          "function": "show"
+        "x-handler": {
+          "controller": "user",
+          "controllerFunc": "show"
         }
       },
       "put": {
@@ -197,9 +197,9 @@
             "description": "User not found"
           }
         },
-        "handler": {
-          "model": "user",
-          "function": "update"
+        "x-handler": {
+          "controller": "user",
+          "controllerFunc": "update"
         }
       },
       "delete": {
@@ -229,9 +229,9 @@
             "description": "User not found"
           }
         },
-        "handler": {
-          "model": "user",
-          "function": "remove"
+        "x-handler": {
+          "controller": "user",
+          "controllerFunc": "remove"
         }
       }
     }

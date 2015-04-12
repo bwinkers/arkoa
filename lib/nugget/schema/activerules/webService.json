@@ -1,0 +1,42 @@
+{
+  "title": "ActiveRules Web Service",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "The most common name used for the Web Service",
+      "description-arl10n": "core.name.label",
+      "type": "string"
+    },
+    "routes": {
+      "type": "array",
+      "oneOf": [
+          {"$ref": "#/definitions/route"}
+        ]
+    },
+    "required": ["routes"]
+  },
+  "definitions": {
+    "route": {
+      "description": "An ActiveRules route",
+      "properties": {
+        "method": {
+          "description": "The HTTP method",
+          "enum": ["delete","get","head","options","post","put","trace"]
+        },
+        "path": {
+          "decsription": "The URL route path",
+          "type": "string"
+        },
+        "controller": {
+          "description": "The registered controller to use in handling this request",
+          "type": "string"
+        },
+        "controllerFunc": {
+          "description": "The function within the registered controller that actually does the work.",
+          "type": "string"
+        }
+      },
+      "required": ["method", "path", "controller", "controllerFunc"]
+    }
+  }
+}

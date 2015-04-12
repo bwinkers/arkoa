@@ -1,0 +1,15 @@
+{
+  "title": "ActiveRules Message",
+  "type": "object",
+  "properties": {
+     "lten": {
+      "description": "The ActiveRules localization (lten) object notation code for the error.",
+      "type": "string"
+    },
+    "message": {
+      "description": "The message to be returned to a client or user.",
+      "type": "string"
+    }
+  },
+  "required": ["lten"]
+}

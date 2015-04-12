@@ -1,0 +1,16 @@
+{
+  "title": "ActiveRule Error",
+  "type": "object",
+  "allOf": [
+    { "$ref": "errorMessage.json" },
+    {
+      "properties": {
+        "httpCode": {
+          "description": "The HTTP status code",
+          "type": "number"
+        }
+      }
+    }
+  ],
+  "required": ["httpCode"]
+}
